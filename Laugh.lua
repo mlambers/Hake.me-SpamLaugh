@@ -32,6 +32,7 @@ function Laugh.OnGameStart()
 end
 
 function Laugh.OnUpdate()
+	if Engine.IsInGame() == false then return end
 	if Menu.IsEnabled(Laugh.optionEnable) == false then return end
 	if GameRules.GetGameState() < 4 then return end
 	if GameRules.GetGameState() > 5 then return end
@@ -51,7 +52,6 @@ function Laugh.OnUpdate()
 		Engine.ExecuteCommand("say /laugh")
 		Laugh.lastlaugh = GameRules.GetGameTime() + 15.0
 	end
-
 end
 
 return Laugh
