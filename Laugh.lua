@@ -1,6 +1,6 @@
------------------
--- Version 0.2b --
------------------
+----------------------------
+-- Laugh.lua Version 0.2c --
+----------------------------
 
 local Laugh = {
 	OptionEnable = Menu.AddOption({"mlambers", "Laugh Spam"}, "1. Enable", "Enable/Disable this script."),
@@ -15,17 +15,16 @@ function Laugh.OnScriptLoad()
 	Laugh.LastLaugh = 0
 	Laugh.NeedInit = true
 	
-	Console.Print("\n=============================================\n")
-	Console.Print("Script: Laugh Spam | Callback: OnScriptLoad\n")
-	Console.Print("Date & Time: " .. (os.date("%Y-%m-%d %I:%M %p")))
-	Console.Print("=============================================\n\n")
+	Console.Print("[" .. os.date("%I:%M:%S %p") .. "] - - [ Laugh.lua ] [ Version 0.2c ] Script load.")
 end
 
 function Laugh.OnGameEnd()
 	myHero = nil
 	Laugh.LastLaugh = 0
-	collectgarbage("collect")
 	Laugh.NeedInit = true
+	collectgarbage("collect")
+	
+	Console.Print("[" .. os.date("%I:%M:%S %p") .. "] - - [ Laugh.lua ] [ Version 0.2c ] Game end. Reset all variable.")
 end
 
 function Laugh.OnUpdate()
@@ -39,6 +38,8 @@ function Laugh.OnUpdate()
 		end
 		
 		Laugh.NeedInit = false
+		
+		Console.Print("[" .. os.date("%I:%M:%S %p") .. "] - - [ Laugh.lua ] [ Version 0.2c ] Game started, init script done.")
 	end
 	
 	if myHero == nil then return end
