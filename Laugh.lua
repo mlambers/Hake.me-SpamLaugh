@@ -1,6 +1,6 @@
-----------------------------
--- Laugh.lua Version 0.2c --
-----------------------------
+---------------------------
+-- Laugh.lua Version 0.3 --
+---------------------------
 
 local Laugh = {
 	OptionEnable = Menu.AddOption({"mlambers", "Laugh Spam"}, "1. Enable", "Enable/Disable this script."),
@@ -15,7 +15,7 @@ function Laugh.OnScriptLoad()
 	Laugh.LastLaugh = 0
 	Laugh.NeedInit = true
 	
-	Console.Print("[" .. os.date("%I:%M:%S %p") .. "] - - [ Laugh.lua ] [ Version 0.2c ] Script load.")
+	Console.Print("[" .. os.date("%I:%M:%S %p") .. "] - - [ Laugh.lua ] [ Version 0.3 ] Script load.")
 end
 
 function Laugh.OnGameEnd()
@@ -24,25 +24,19 @@ function Laugh.OnGameEnd()
 	Laugh.NeedInit = true
 	collectgarbage("collect")
 	
-	Console.Print("[" .. os.date("%I:%M:%S %p") .. "] - - [ Laugh.lua ] [ Version 0.2c ] Game end. Reset all variable.")
+	Console.Print("[" .. os.date("%I:%M:%S %p") .. "] - - [ Laugh.lua ] [ Version 0.3 ] Game end. Reset all variable.")
 end
 
 function Laugh.OnUpdate()
 	if Menu.IsEnabled(Laugh.OptionEnable) == false then return end
 
-	if Laugh.NeedInit == true then
+	if myHero == nil or myHero ~= Heroes.GetLocal() or Laugh.NeedInit then 
+		myHero = Heroes.GetLocal()
 		Laugh.LastLaugh = 0
-	
-		if myHero == nil then
-			myHero = Heroes.GetLocal()
-		end
-		
 		Laugh.NeedInit = false
 		
-		Console.Print("[" .. os.date("%I:%M:%S %p") .. "] - - [ Laugh.lua ] [ Version 0.2c ] Game started, init script done.")
+		Console.Print("[" .. os.date("%I:%M:%S %p") .. "] - - [ Laugh.lua ] [ Version 0.3 ] Game started, init script done.")
 	end
-	
-	if myHero == nil then return end
 	
 	if Entity.IsAlive(myHero) == false then return end
 	
