@@ -1,3 +1,3 @@
-# Hake.me-SpamLaugh Version 0.3
+# Hake.me-SpamLaugh Version 0.4
 
-Spam /laugh every 15 second.
+Spam /laugh every 15 second
